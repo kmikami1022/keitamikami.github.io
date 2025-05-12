@@ -190,7 +190,7 @@ footer {
 /* ───────────────────────────────────────── */
 /* デスクトップでは max-width 400px まで表示 */
 .responsive-img {
-  max-width: 600px;
+  max-width: 540px;
   width: 100%;
   height: auto;
 }
