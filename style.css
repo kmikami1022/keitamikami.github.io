@@ -246,5 +246,15 @@ footer {
       line-height: 1.2;      /* 行間を若干詰めて見やすく */
     }
   }
+  @media (max-width: 576px) {
+    .header-top {
+      height: 3.5rem;       /* お好みで調整 */
+      padding: 0.5rem 0.75rem;
+    }
+    main,
+    .container {
+      padding-top: 3.5rem;  /* 同じ数値を指定 */
+    }
+  }
 }
 }
