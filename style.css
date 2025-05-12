@@ -241,7 +241,7 @@ footer {
     /* すでに書かれている .top-nav 周りの調整の下あたりに追記 */
     table th,
     table td {
-      font-size: 0.75rem;    /* フォントを少し小さめに */
+      font-size: 0.6rem;    /* フォントを少し小さめに */
       padding: 0.5rem 0.25rem; /* セル内余白もスマホ向けに詰める */
       line-height: 1.2;      /* 行間を若干詰めて見やすく */
     }
