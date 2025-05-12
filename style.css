@@ -195,7 +195,7 @@ footer {
   height: auto;
 }
 
-@media (max-width: 576) {
+@media (max-width: 768) {
   .responsive-img {
     width: 150px;
     /* max-width: none; にしてもOK */
@@ -248,12 +248,12 @@ footer {
   }
   @media (max-width: 576px) {
     .header-top {
-      height: 7.0rem;       /* お好みで調整 */
+      height: 7.7rem;       /* お好みで調整 */
       padding: 0.5rem 0.75rem;
     }
     main,
     .container {
-      padding-top: 7.0rem;  /* 同じ数値を指定 */
+      padding-top: 7.7rem;  /* 同じ数値を指定 */
     }
   }
 }
