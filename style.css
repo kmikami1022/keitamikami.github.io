@@ -197,7 +197,7 @@ footer {
 
 @media (max-width: none) {
   .responsive-img {
-    width: 50%;
+    width: 150px;
     /* max-width: none; にしてもOK */
   }
 }
