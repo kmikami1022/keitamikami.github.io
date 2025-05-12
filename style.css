@@ -1,139 +1,209 @@
-/* ベース設定 */
+/* ───────────────────────────────────────── */
+/* 1. テーマカラー & ベース設定 */
+/* ───────────────────────────────────────── */
+:root {
+  --color-primary: #800020;
+  --color-primary-light: #a00030;
+  --color-bg: #f4f4f4;
+  --color-surface: #ffffff;
+  --color-text: #333333;
+  --radius-lg: 1rem;
+  --radius-md: 0.5rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --shadow-light: 0 4px 8px rgba(0,0,0,0.05);
+  --shadow-strong: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+/* ───────────────────────────────────────── */
+/* 2. ヘッダー（ガラスモーフィズム風） */
+/* ───────────────────────────────────────── */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255,255,255,0.85);
+  border-bottom: 1px solid var(--color-primary-light);
+  z-index: 1000;
+  box-shadow: var(--shadow-light);
+  padding: var(--spacing-sm) 0;
+}
+
+.header-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-lg);
+}
+
+/* ロゴやタイトルが入る予定ならここで */
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  color: var(--color-primary);
+}
+
+/* ───────────────────────────────────────── */
+/* 3. ナビゲーション & 言語切替 */
+/* ───────────────────────────────────────── */
+.top-nav a {
+  display: inline-block;
+  margin-right: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--radius-md);
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s, transform 0.2s;
+}
+.top-nav a:last-child {
+  margin-right: 0;
+}
+.top-nav a:hover {
+  background-color: var(--color-primary-light);
+  transform: translateY(-2px);
+}
+
+.lang-switcher button {
+  margin-left: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  background-color: transparent;
+  color: var(--color-primary);
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+.lang-switcher button:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ───────────────────────────────────────── */
+/* 4. メインコンテンツ */
+/* ───────────────────────────────────────── */
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 5rem; /* ヘッダー高さ + 余裕 */
+  padding: 0 var(--spacing-lg) var(--spacing-lg);
+}
+
+section {
+  background-color: var(--color-surface);
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
+  transition: box-shadow 0.3s;
+}
+section:hover {
+  box-shadow: var(--shadow-strong);
+}
+
+h2 {
+  margin-top: 0;
+  color: var(--color-primary);
+  font-size: 1.75rem;
+  letter-spacing: 0.5px;
+  border-bottom: 3px solid var(--color-primary);
+  padding-bottom: var(--spacing-sm);
+}
+
+article h3 {
+  font-size: 1.5rem;
+  color: var(--color-primary-light);
+  margin-top: var(--spacing-md);
+}
+
+/* ───────────────────────────────────────── */
+/* 5. テーブルスタイル */
+/* ───────────────────────────────────────── */
+table.q {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--spacing-md);
+}
+table.q th,
+table.q td {
+  padding: var(--spacing-sm) var(--spacing-md);
+  text-align: left;
+  vertical-align: top;
+}
+table.q th {
+  color: var(--color-primary);
+  width: 30%;
+}
+
+/* ───────────────────────────────────────── */
+/* 6. リスト & リンク */
+/* ───────────────────────────────────────── */
+ol, ul {
+  margin: var(--spacing-md) 0;
+  padding-left: 1.5rem;
+}
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--color-primary);
+  transition: border-color 0.3s;
+}
+a:hover {
+  border-color: var(--color-primary-light);
+}
+
+/* ───────────────────────────────────────── */
+/* 7. フッター */
+/* ───────────────────────────────────────── */
+footer {
+  text-align: center;
+  padding: var(--spacing-md);
+  font-size: 0.9rem;
+  color: #666;
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-primary-light);
+  margin-top: var(--spacing-lg);
+  box-shadow: var(--shadow-light);
+}
+
+/* ───────────────────────────────────────── */
+/* 8. レスポンシブ対応 */
+/* ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--spacing-sm) var(--spacing-md);
   }
-  
-  /* ヘッダー */
-  header {
-    background-color: #fff;
-    padding: 1.5rem;
-    text-align: center;
-    border-bottom: 1px solid #800020;
-    margin-bottom: 1.5rem;
+  .top-nav {
+    margin-bottom: var(--spacing-sm);
   }
-  
-  header h1 {
-    margin: 0.5rem 0;
-    font-size: 2.5rem;
-    color: #800020;
-  }
-  
-  header p {
-    margin: 0.5rem 0;
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  header figure {
-    margin: 1rem auto;
-    max-width: 900px;
-  }
-  
-  header figure img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    border: 3px solid #800020;
-  }
-  
-  /* メインコンテンツ */
   main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    margin-top: 6rem;
   }
-  
-  /* セクション */
-  section {
-    padding: 1.5rem;
-    border-bottom: 1px solid #eee;
-  }
-  
-  section:last-of-type {
-    border-bottom: none;
-  }
-  
   h2 {
-    margin-top: 0;
-    color: #800020;
-    border-bottom: 2px solid #800020;
-    padding-bottom: 0.3rem;
-  }
-  
-  /* 各記事内タイトル */
-  article h3 {
-    margin-top: 1.2rem;
     font-size: 1.5rem;
-    color: #a83232;
   }
-  
-  /* テーブルスタイル */
-  table.q {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed; /* 各セルの幅を固定 */
+  article h3 {
+    font-size: 1.3rem;
   }
-  
-  table.q th,
-  table.q td {
-    padding: 0.8rem;
-    text-align: left;
-    vertical-align: top;
-    word-wrap: break-word;
-  }
-  
-  table.q th {
-    width: 30%;
-    padding-right: 1rem;
-  }
-  
-  /* リスト */
-  ol, ul {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-  
-  ol li, ul li {
-    margin-bottom: 0.5rem;
-  }
-  
-  /* リンク */
-  a {
-    color: #800020;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* フッター */
-  footer {
-    text-align: center;
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: #666;
-    background-color: #fff;
-    border-top: 1px solid #800020;
-    margin-top: 2rem;
-  }
-  
-  /* レスポンシブ対応 */
-  @media (max-width: 768px) {
-    header h1 {
-      font-size: 2rem;
-    }
-    article h3 {
-      font-size: 1.3rem;
-    }
-    table.q th {
-      width: 40%;
-    }
-  }
+}

@@ -1,231 +1,739 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <title>Keita Mikami</title>
+
+  <!-- SEO: 言語別ページの明示 -->
+  <link rel="alternate" href="https://kmikami1022.github.io/keitamikami.github.io/index.html" hreflang="x-default" />
+  <link rel="alternate" href="https://kmikami1022.github.io/keitamikami.github.io/index.html" hreflang="en" />
+  <link rel="alternate" href="https://kmikami1022.github.io/keitamikami.github.io/index.html" hreflang="ja" />
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+     /* 言語制御 */
+     .lang { display: none; }
+    body[data-lang="en"] .lang.en { display: block; }
+    body[data-lang="en"] .lang.ja { display: none; }
+    body[data-lang="ja"] .lang.ja { display: block; }
+    body[data-lang="ja"] .lang.en { display: none; }
+
+    /* テーブル */
+    table.q { width:100%; border-collapse:collapse; table-layout:fixed; }
+    table.q th, table.q td { padding:0.8rem; text-align:left; vertical-align:top; word-wrap:break-word; }
+    table.q th { width:30%; padding-right:1rem; }
+
+    /* ヘッダートップ: ナビと切替を並べる */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+    }
+
+    /* ヘッダートップ: ナビと切替を並べる */
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    /* ヘッダー全体のタイトル非表示（情報は後でメインに移動） */
+    header h1,
+    header p,
+    header figure { display: none; }
+
+    /* プロフィールカード */
+    .profile {
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .profile-img {
+      flex: 0 0 auto;
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .profile-info h1,
+    .profile-info p {
+      margin: 0.2rem 0;
+    }
+
+    /* メインコンテンツは左揃え */
+    main {
+      text-align: left;
+      padding: 1rem 2rem;
+    }
+
+    /* 言語切替 */
+    .lang-switcher button {
+      margin-left: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 2px solid #800020;
+      border-radius: 9999px;
+      background: transparent;
+      color: #800020;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .lang-switcher button:hover { background: #800020; color: #fff; }
+
+    /* トップナビ */
+    .top-nav {
+      display: flex;
+      gap: 1rem;
+    }
+    .top-nav a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      background: #800020;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .top-nav a:hover { background: #a00030; }
+  </style>
 </head>
-<body>
-  <!-- 言語切替ナビゲーション -->
-  <nav class="language-switch">
-    <ul>
-      <li><a href="kmikami_jp.html">日本語版はこちら</a></li>
-    </ul>
-  </nav>
+<body data-lang="ja">
+
   <header>
-    <h1>Keita Mikami</h1>
-    <p>
-      Assistant Professor of Graduate School of Information Sciences, University of Hyogo<br>
-      e-mail: keita_mikami atmark sis.u-hyogo.ac.jp
-    </p>
-    <figure>
-      <img src="hyogouniv2.jpg" alt=" ">
-    </figure>
+    <div class="header-top">
+      <nav class="top-nav">
+        <a href="#research"><span class="lang en">Research Interests</span><span class="lang ja">研究分野</span></a>
+        <a href="#cv"><span class="lang en">Curriculum Vitae</span><span class="lang ja">経歴</span></a>
+        <a href="#publications"><span class="lang en">Publications</span><span class="lang ja">出版物</span></a>
+        <a href="#talks"><span class="lang en">Talks</span><span class="lang ja">講演</span></a>
+        <a href="#links"><span class="lang en">Links</span><span class="lang ja">リンク</span></a>
+      </nav>
+      <div class="lang-switcher">
+        <button data-lang="en">English</button>
+        <button data-lang="ja">日本語</button>
+      </div>
+    </div>
   </header>
 
   <main>
-    <section>
-      <h2>Research Interests</h2>
+    
+    <div class="profile">
+      <img class="profile-img" src="hyogouniv2.jpg" alt="" style="width:540px; height:auto;">
+      <div class="profile-info">
+        <h1><p style="color: #800020;"><span class="lang en">Keita Mikami</span><span class="lang ja">三上 渓太</span></p></h1>
+        <p><span class="lang en">Assistant Professor <br>Graduate School of Information Sciences <br>University of Hyogo</span><span class="lang ja">兵庫県立大学大学院情報科学研究科 助教</span></p>
+        <p><span class="lang en">e-mail: keita_mikami [at] sis.u-hyogo.ac.jp</span><span class="lang ja">メール: keita_mikami [at] sis.u-hyogo.ac.jp</span></p>
+      </div>
+    </div>
+
+    <!-- 研究分野 -->
+    <section id="research">
+      <h2>
+        <span class="lang en">Research Interests</span>
+        <span class="lang ja">研究分野</span>
+      </h2>
       <p>
-        I am interested in <strong>Schrödinger operators</strong> and related topics.
+        <span class="lang en">I am interested in <strong>Schrödinger operators</strong> and related topics.</span>
+        <span class="lang ja">私は<strong>シュレディンガー作用素</strong>および関連分野に興味があります。</span>
       </p>
     </section>
 
-    <section>
-        <h2>Curriculum Vitae</h2>
-        <p>
+    <!-- 略歴 -->
+    <section id="cv">
+      <h2>
+        <span class="lang en">Curriculum Vitae</span>
+        <span class="lang ja">略歴</span>
+      </h2>
+      <p>
+        <span class="lang en">
           <strong>Name:</strong> Keita Mikami<br>
           <strong>Born:</strong> Tokyo, Japan, October 1991
-        </p>
-      
-        <article>
-          <h3>Position</h3>
-          <table class="q">
-            <tbody>
-              <tr>
-                <th>April 2025 – Present</th>
-                <td>Visiting Research Scientist, Division of Fundamental Mathematical Science, RIKEN Center for Interdisciplinary Theoretical and Mathematical Sciences Center, RIKEN</td>
-              </tr>
-              <tr>
-                <th>October 2024 – March 2024</th>
-                <td>Visiting Research Scientist, Interdisciplinary Theoretical and Mathematical Sciences Program (iTHEMS), RIKEN</td>
-              </tr>
-              <tr>
-                <th>October 2024 – Present</th>
-                <td>Assistant Professor, Graduate School of Information Sciences, University of Hyogo</td>
-              </tr>
-              <tr>
-                <th>January 2023 – September 2024</th>
-                <td>Adjunct Assistant Professor, Faculty of Science, Kyoto University</td>
-              </tr>
-              <tr>
-                <th>May 2019 – September 2024</th>
-                <td>Research Scientist, iTHEMS, RIKEN</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-      
-        <article>
-          <h3>Education</h3>
-          <table class="q">
-            <tbody>
-              <tr>
-                <th>March 2019</th>
-                <td>Ph.D. in Mathematical Science, the University of Tokyo<br>(Advisor: Shu Nakamura)</td>
-              </tr>
-              <tr>
-                <th>March 2016</th>
-                <td>Master of Mathematical Science, the University of Tokyo<br>(Advisor: Shu Nakamura)</td>
-              </tr>
-              <tr>
-                <th>March 2014</th>
-                <td>Bachelor of Sciences, the University of Tokyo</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-      
-        <article>
-          <h3>Fellowships</h3>
-          <table class="q">
-            <tbody>
-              <tr>
-                <th>April 2019</th>
-                <td>JSPS Research Fellow (PD), Japan Society for the Promotion of Science (change of status from DC2)</td>
-              </tr>
-              <tr>
-                <th>April 2018 – March 2019</th>
-                <td>JSPS Research Fellow (DC2), Japan Society for the Promotion of Science</td>
-              </tr>
-              <tr>
-                <th>October 2014 – March 2019</th>
-                <td>FMSP Course Student</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-      
-        <article>
-          <h3>Academic Visits</h3>
-          <table class="q">
-            <tbody>
-              <tr>
-                <th>September 2019 – November 2019</th>
-                <td>University of California Berkeley (RIKEN iTHEMS – Berkeley Math Visiting Scholar Program)</td>
-              </tr>
-              <tr>
-                <th>September 2018 – October 2018</th>
-                <td>Aarhus University (Frontiers of Mathematical Sciences and Physics Program)</td>
-              </tr>
-            </tbody>
-          </table>
-        </article>
-      </section>
+        </span>
+        <span class="lang ja">
+          <strong>氏名:</strong> 三上 渓太<br>
+          <strong>出生:</strong> 日本・東京, 1991年10月
+        </span>
+      </p>
 
-    <section>
-        <h2>Publications</h2>
-        
+      <!-- 職歴 -->
+      <article>
+        <h3>
+          <span class="lang en">Position</span>
+          <span class="lang ja">職歴</span>
+        </h3>
+        <table class="q">
+          <tbody>
+            <tr>
+              <th>
+                <span class="lang en">April 2025 - Present</span>
+                <span class="lang ja">2025年4月～現在</span>
+                </th>
+              <td>
+                <span class="lang en">
+                  Visiting Research Scientist, Division of Fundamental Mathematical Science,
+                  RIKEN Center for Interdisciplinary Theoretical and Mathematical Sciences 
+                </span>
+                <span class="lang ja">
+                  理化学研究所 数理創造センター基礎数理科学領域 客員研究員
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">October 2024 - April 2025</span>
+                <span class="lang ja">2024年10月～2025年4月</span>
+                </th>
+              <td>
+                <span class="lang en">
+                  Visiting Research Scientist, RIKEN Interdisciplinary Theoretical and Mathematical Sciences Program(iTHEMS)
+                </span>
+                <span class="lang ja">
+                  理化学研究所 数理創造プログラム(iTHEMS) 客員研究員
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">October 2024 - Present</span>
+                <span class="lang ja">2024年10月～現在</span>
+                </th>
+              <td>
+                <span class="lang en">Assistant Professor, Graduate School of Information Sciences, University of Hyogo</span>
+                <span class="lang ja">兵庫県立大学大学院情報科学研究科 助教</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">January 2023 - September 2024</span>
+                <span class="lang ja">2019年3月</span>
+              </th>
+              <td>
+                <span class="lang en">Adjunct Assistant Professor, Faculty of Science, Kyoto University</span>
+                <span class="lang ja">京都大学理学部 連携助教</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">May 2019 - September 2024</span>
+                <span class="lang ja">2019年3月</span>
+              </th>
+              <td>
+                <span class="lang en">Research Scientist, iTHEMS, RIKEN</span>
+                <span class="lang ja">理化学研究所 iTHEMS 研究員</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 学歴 -->
+      <article>
+        <h3>
+          <span class="lang en">Education</span>
+          <span class="lang ja">学歴</span>
+        </h3>
+        <table class="q">
+          <tbody>
+            <tr>
+              <th>
+                <span class="lang en">March 2019</span>
+                <span class="lang ja">2019年3月</span>
+              </th>
+              <td>
+                <span class="lang en">Ph.D. in Mathematical Science, the University of Tokyo (Advisor: Shu Nakamura)</span>
+                <span class="lang ja">東京大学 博士(数理科学)（指導教員：中村 周）</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">March 2016</span>
+                <span class="lang ja">2016年3月</span>
+              </th>
+              <td>
+                <span class="lang en">Master of Mathematical Science, the University of Tokyo (Advisor: Shu Nakamura)</span>
+                <span class="lang ja">東京大学 修士 (数理科学)（指導教員：中村 周）</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">March 2014</span>
+                <span class="lang ja">2014年3月</span>
+              </th>
+              <td>
+                <span class="lang en">Bachelor of Sciences, the University of Tokyo</span>
+                <span class="lang ja">東京大学 学士(理学)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- フェローシップ -->
+      <article>
+        <h3>
+          <span class="lang en">Fellowships</span>
+          <span class="lang ja">フェローシップ</span>
+        </h3>
+        <table class="q">
+          <tbody>
+            <tr>
+              <th>
+                <span class="lang en">April 2019</span>
+                <span class="lang ja">2019年4月</span>
+              </th>
+              <td>
+                <span class="lang en">JSPS Research Fellow (PD), Japan Society for the Promotion of Science</span>
+                <span class="lang ja">日本学術振興会 特別研究員 (PD)</span>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">April 2018  March 2019</span>
+                <span class="lang ja">2018年4月～2019年3月</span>
+              </th>
+              <td>
+                <span class="lang en">JSPS Research Fellow (DC2), Japan Society for the Promotion of Science</span>
+                <span class="lang ja">日本学術振興会 特別研究員 (DC2)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <!-- 学術訪問 -->
+      <article>
+        <h3>
+          <span class="lang en">Academic Visits</span>
+          <span class="lang ja">学術訪問</span>
+        </h3>
+        <table class="q">
+          <tbody>
+            <tr>
+              <th>
+                <span class="lang en">September 2019 - November 2019</span>
+                <span class="lang ja">2019年9月～2019年11月</span>
+              </th>
+              <td>
+                <span class="lang en">
+                  University of California Berkeley (RIKEN iTHEMS - Berkeley Math Visiting Scholar Program)
+                </span>
+                <span class="lang ja">
+                    カリフォルニア大学バークレー校 (RIKEN iTHEMS - Berkeley Math Visiting Scholar Program)
+                </span>
+            </tr>
+            <tr>
+              <th>
+                <span class="lang en">September 2018 - October 2018</span>
+                <span class="lang ja">2018年9月～2018年10月</span>
+              </th>
+              <td>
+                <span class="lang en">
+                  Aarhus University (Frontiers of Mathematical Sciences and Physics Program)</span>
+                <span class="lang ja">
+                  オーフス大学 (FMSPプログラム)</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <div class="lang ja">
         <article>
-          <h3>Papers (with peer review, in English)</h3>
-          <ol>
-            <li>
-              K. Mikami, Semiclassical Defect Measure and Observability Estimate for Schrödinger Operators with Homogeneous Potentials of Order Zero, Reviews in Mathematical Physics, to appear.<br>
-              <a href="https://www.worldscientific.com/doi/10.1142/S0129055X24500594" target="_blank">Article </a>
-            </li>
-            <li>
-              K. Mikami, S. Nakamura and Y. Tadano, Continuum limit for Laplace and Elliptic operators on lattices, Pure and Applied Analysis, 6 (2024), No. 3, 765–788.<br>
-              <a href="https://msp.org/paa/2024/6-3/p05.xhtml" target="_blank">Article </a>
-            </li>
-            <li>
-              K. Mikami, Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Funkcialaj Ekvacioj, 61 (2018), no. 2, 267–284.<br>
-              <a href="https://www.jstage.jst.go.jp/article/fesi/61/2/61_267/_article/-char/en" target="_blank">Article on J-STAGE</a>
-            </li>
-          </ol>
+          <h3>教育歴</h3>
+          <table class="q">
+            <tbody>
+              <tr>
+                <th>2024年9月～2025年3月</th>
+                <td>兵庫県立大学社会情報科学部, 微分積分学1(B) (共同担当: 円谷友英教授)</td>
+              </tr>
+              <tr>
+                <th>2023年4月～2024年9月</th>
+                <td>京都大学非常勤講師, 微分積分学続論1,2, 線型代数学A<br>(ベクトル解析学, 微分方程式入門, 線型代数学)</td>
+              </tr>
+              <tr>
+                <th>2021年9月～2023年3月</th>
+                <td>早稲田大学基幹理工学部非常勤講師, 応用数理演習B (統計学の演習)</td>
+              </tr>
+            </tbody>
+          </table>
         </article>
-        
-        <article>
-          <h3>Papers (with peer review, in Japanese)</h3>
-          <ol>
-            <li>
-              細胞培養における力学系的方法, 
-              <a href="http://www.ms.u-tokyo.ac.jp/lmsr/2018/" target="_blank">数理科学実践研究レター 2018</a>
-            </li>
-          </ol>
-        </article>
-        
-        <article>
-          <h3>Proceedings (without peer review)</h3>
-          <ol>
-            <li>
-            ユークリッド空間から筒状の集合を除いた集合上でのシュレディンガー作用素の観測性不等式, RIMS Kôkyûroku No. 2200, 92–97.
-          </li>
-            <li>
-              Observability estimates for Schrödinger operators on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS Kôkyûroku No. 2192.
-            </li>
-          </ol>
-        </article>
-        
-        <article>
-          <h3>Preprints</h3>
-          
-        </article>
-      </section>
+      </div>
+
+    </section>
+
+    <!-- Publications, Talks, Links も同様に <span class="lang en">…</span> / <span class="lang ja">…</span> でラップしてください -->
   
-      <section>
-        <h2>Talks</h2>
-        <ol>
-          <li>Continuum limit for Laplace and Elliptic operators on lattices, Recent Developments in Linear and Nonlinear Dispersive Differential Equations, RIMS, May 2024.</li>
-          <li>Observability estimates on the Euclidian set minus tube, The 4th Workshop for Young Researchers on Spectral and Scattering Theory, Ehime University, March 2023.</li>
-          <li>Introduction to the control of Schrödinger equation, Lectures on Semiclassical Analysis 2022, セミナー＆カルチャーセンター臨湖, September 2022.</li>
-          <li>Observability estimates of Schrödinger operators on Euclidian sets minus tube, Op Seminar, October 2021.</li>
-          <li>Observability estimates on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS, February 2021.</li>
-          <li>Observability estimates on Euclidian sets minus tube, スペクトル・散乱理論とその周辺, RIMS, December 2020.</li>
-          <li>From eigenvalues to resonances, iTHEMS Math Seminar (online), RIKEN, May 2020.</li>
-          <li>Semiclassical defect measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Harmonic Analysis and Differential Equations Seminar, University of California Berkeley, October 2019.</li>
-          <li>Introduction to Schrödinger Operators, iTHEMS Math Seminar, RIKEN, July 2019.</li>
-          <li>Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Gakushuin University Spectral Theory Seminar, Gakushuin University, June 2019.</li>
-          <li>Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Osaka University Differential Equation Seminar, Osaka University, June 2019.</li>
-          <li>半古典解析と観測性不等式, RIKEN iTHEMSアウトリーチ研究集会2019, 東京大学玉原国際セミナーハウス, June 2019.</li>
-          <li>0次斉次なポテンシャルを持つシュレディンガー作用素の方向局所化現象, FMSP院生集中講義, The University of Tokyo, March 2019.</li>
-          <li>Semiclassical measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Himeji Conference on Partial Differential Equations, Egret Himeji, March 2019.</li>
-          <li>Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, スペクトル・散乱理論とその周辺, 京都大学数理解析研究所 (RIMS), December 2018.</li>
-          <li>Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, 第28回数理物理と微分方程式, KKRはこだて, November 2018.</li>
-          <li>Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, Math/Phys Seminar, Aarhus University, October 2018.</li>
-          <li>Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Summer School "Spectral Theory of Schrödinger Operators”, Jena University, July 2018.</li>
-          <li>On Schrödinger operators with homogeneous potentials of order zero on manifolds, Kobe University Analysis Seminar, Kobe University, November 2017.</li>
-          <li>Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, 2017 Symposium on Spectral and Scattering Theory in Matsumoto, Shinshu University, January 2017.</li>
-          <li>Schrödinger operators with homogeneous potentials on manifolds, 第27回数理物理と微分方程式, かんぽの宿富山, November 2016.</li>
-          <li>Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Lectures on Semi-Classical Analysis, Ritsumeikan University, July 2016.</li>
-          <li>Geometrical scattering of the Schrödinger operators with potentials of order 0, 第26回数理物理と微分方程式, ニューサンピア姫路ゆめさき, November 2015.</li>
-          <li>ワイルの法則について, 第25回数理物理と微分方程式, 四季の湯強羅静雲荘, November 2014.</li>
-        </ol>
-      </section>
+    <!-- Publications -->
+    <section id="publications">
+  <h2>
+    <span class="lang en">Publications</span>
+    <span class="lang ja">出版物</span>
+  </h2>
+  <article>
+    <h3>
+      <span class="lang en">Papers (peer‐reviewed, English)</span>
+      <span class="lang ja">査読付き論文（英語）</span>
+    </h3>
+    <ol>
+      <li>
+        <span class="lang en">
+          K. Mikami, Semiclassical Defect Measure and Observability Estimate for Schrödinger Operators with Homogeneous Potentials of Order Zero, Reviews in Mathematical Physics, to appear.<br>
+          <a href="https://www.worldscientific.com/doi/10.1142/S0129055X24500594" target="_blank">Article</a>
+        </span>
+        <span class="lang ja">
+          K. Mikami, Semiclassical Defect Measure and Observability Estimate for Schrödinger Operators with Homogeneous Potentials of Order Zero, Reviews in Mathematical Physics, to appear.<br>
+          <a href="https://www.worldscientific.com/doi/10.1142/S0129055X24500594" target="_blank">Article</a>
+        </span>
+      </li>
+      <li>
+        <span class="lang en">
+          K. Mikami, S. Nakamura and Y. Tadano, Continuum limit for Laplace and Elliptic operators on lattices, Pure and Applied Analysis, 6 (2024), No. 3, 765–788.<br>
+          <a href="https://msp.org/paa/2024/6-3/p05.xhtml" target="_blank">Article</a>
+        </span>
+        <span class="lang ja">
+          K. Mikami, S. Nakamura and Y. Tadano, Continuum limit for Laplace and Elliptic operators on lattices, Pure and Applied Analysis, 6 (2024), No. 3, 765–788.<br>
+          <a href="https://msp.org/paa/2024/6-3/p05.xhtml" target="_blank">Article</a>
+        </span>
+      </li>
+      <li>
+        <span class="lang en">
+          K. Mikami, Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Funkcialaj Ekvacioj, 61 (2018), no. 2, 267–284.<br>
+          <a href="https://www.jstage.jst.go.jp/article/fesi/61/2/61_267/_article/-char/en" target="_blank">Article on J-STAGE</a>
+        </span>
+        <span class="lang ja">
+          K. Mikami, Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Funkcialaj Ekvacioj, 61 (2018), no. 2, 267–284.<br>
+          <a href="https://www.jstage.jst.go.jp/article/fesi/61/2/61_267/_article/-char/en" target="_blank">Article on J-STAGE</a>
+        </span>
+      </li>
+    </ol>
+  </article>
 
-      <section>
-        <h2>Links</h2>
-        <ul>
-          <li><a href="https://researchmap.jp/keita-mikami/?lang=en" target="_blank">researchmap</a></li>
-          <li><a href="https://orcid.org/0009-0002-8598-9200" target="_blank">ORCiD</a></li>
-          <li><a href="https://u-hyogo.info/en/" target="_blank">University of Hyogo Graduate School of Information Science</a></li>
-          <li><a href="https://www.u-hyogo.ac.jp/sis/english/index.html" target="_blank">University of Hyogo School of Social Information Science</a></li>
-          <li><a href="https://ithems.riken.jp/en" target="_blank">iTHEMS Center</a></li>
-          <li><a href="https://ithems.riken.jp/en/about/working-groups/ithems-math-phys-wg" target="_blank">iTHEMS Math-Phys WG</a></li>
-        </ul>
-      </section>
+  <article>
+    <h3>
+      <span class="lang en">Papers (peer‐reviewed, Japanese)</span>
+      <span class="lang ja">査読付き論文（日本語）</span>
+    </h3>
+    <ol>
+      <li>
+        <span class="lang en">
+          細胞培養における力学系的方法<br>
+          <a href="http://www.ms.u-tokyo.ac.jp/lmsr/2018/" target="_blank">数理科学実践研究レター 2018</a>
+        </span>
+        <span class="lang ja">
+          細胞培養における力学系的方法<br>
+          <a href="http://www.ms.u-tokyo.ac.jp/lmsr/2018/" target="_blank">数理科学実践研究レター 2018</a>
+        </span>
+      </li>
+    </ol>
+  </article>
 
-    <!-- Publications、Talks、Linksなど他のセクションは必要に応じて記載 -->
+  <article>
+    <h3>
+      <span class="lang en">Proceedings (non‐peer‐reviewed)</span>
+      <span class="lang ja">講究録（査読なし）</span>
+    </h3>
+    <ol>
+      <li>
+        <span class="lang en">
+          ユークリッド空間から筒状の集合を除いた集合上でのシュレディンガー作用素の観測性不等式e, RIMS Kôkyûroku No. 2200, 92–97.
+        </span>
+        <span class="lang ja">
+          ユークリッド空間から筒状の集合を除いた集合上でのシュレディンガー作用素の観測性不等式, RIMS Kôkyûroku No. 2200, 92–97.
+        </span>
+      </li>
+      <li>
+        <span class="lang en">
+          Observability estimates for Schrödinger operators on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS Kôkyûroku No. 2192.
+        </span>
+        <span class="lang ja">
+          Observability estimates for Schrödinger operators on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS Kôkyûroku No. 2192.
+        </span>
+      </li>
+    </ol>
+  </article>
+
+  <article>
+    <h3>
+      <span class="lang en">Preprints</span>
+      <span class="lang ja">プレプリント</span>
+    </h3>
+    <!-- プレプリントがあればここに追加 -->
+  </article>
+</section>
+
+<section id="talks">
+  <h2>
+    <span class="lang en">Talks</span>
+    <span class="lang ja">講演</span>
+  </h2>
+  <ol>
+    <li>
+      <span class="lang en">
+        Continuum limit for Laplace and Elliptic operators on lattices, Recent Developments in Linear and Nonlinear Dispersive Differential Equations, RIMS, May 2024.
+      </span>
+      <span class="lang ja">
+        Continuum limit for Laplace and Elliptic operators on lattices, 線形及び非線形分散型微分方程式の近年の研究, 京都大学数理解析研究所, 2024年5月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Observability estimates on the Euclidian set minus tube, The 4th Workshop for Young Researchers on Spectral and Scattering Theory, Ehime University, March 2023.
+      </span>
+      <span class="lang ja">
+        Observability estimates on the Euclidian set minus tube, 第4回 スペクトル・散乱若手勉強会, 愛媛大学, 2023年3月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Introduction to the control of Schrödinger equation, Lectures on Semiclassical Analysis 2022, セミナー＆カルチャーセンター臨湖, September 2022.
+      </span>
+      <span class="lang ja">
+        Introduction to the control of Schrödinger equation, Lectures on Semiclassical Analysis 2022, セミナー＆カルチャーセンター臨湖, 2022年9月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Observability estimates of Schrödinger operators on Euclidian sets minus tube, Op Seminar, October 2021.
+      </span>
+      <span class="lang ja">
+        Observability estimates of Schrödinger operators on Euclidian sets minus tube, Op Seminar, 2021年10月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Observability estimates on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS, February 2021.
+      </span>
+      <span class="lang ja">
+        Observability estimates on Euclidian sets minus tube, Recent developments in studies of resonances, RIMS, 2021年2月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Observability estimates on Euclidian sets minus tube, Spectral and Scattering Theory and related topics, RIMS, December 2020.
+      </span>
+      <span class="lang ja">
+        Observability estimates on Euclidian sets minus tube, スペクトル・散乱理論とその周辺, RIMS, 2020年12月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        From eigenvalues to resonances, iTHEMS Math Seminar (online), RIKEN, May 2020.
+      </span>
+      <span class="lang ja">
+        From eigenvalues to resonances, iTHEMS 数学ゼミ (オンライン), 理化学研究所, 2020年5月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical defect measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Harmonic Analysis and Differential Equations Seminar, University of California Berkeley, October 2019.
+      </span>
+      <span class="lang ja">
+        Semiclassical defect measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Harmonic Analysis and Differential Equations Seminar, カリフォルニア大学バークレー校, 2019年10月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Introduction to Schrödinger Operators, iTHEMS Math Seminar, RIKEN, July 2019.
+      </span>
+      <span class="lang ja">
+        Introduction to Schrödinger Operators, iTHEMS 数学, 理化学研究所, 2019年7月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Gakushuin University Spectral Theory Seminar, Gakushuin University, June 2019.
+      </span>
+      <span class="lang ja">
+        Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, 学習院大学スペクトル理論ゼミ, 学習院大学, 2019年6月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Osaka University Differential Equation Seminar, Osaka University, June 2019.
+      </span>
+      <span class="lang ja">
+        Semiclassical methods and observability estimate for Schrödinger operators with homogeneous potentials of order zero, 大阪大学微分方程式ゼミ, 大阪大学, 2019年6月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical analysis and observability estimate, RIKEN iTHEMS Outreach Workshop, 東京大学玉原国際セミナーハウス, June 2019.
+      </span>
+      <span class="lang ja">
+        半古典解析と観測性不等式, RIKEN iTHEMS アウトリーチ研究集会2019, 東京大学玉原国際セミナーハウス, 2019年6月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        0次斉次なポテンシャルを持つシュレディンガー作用素の方向局所化現象, FFMSP院生集中講義, The University of Tokyo, March 2019.
+      </span>
+      <span class="lang ja">
+        0次斉次なポテンシャルを持つシュレディンガー作用素の方向局所化現象, FMSP院生集中講義, 東京大学, 2019年3月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, Himeji Conference on Partial Differential Equations, Egret Himeji, March 2019.
+      </span>
+      <span class="lang ja">
+        Semiclassical measures and observability estimate for Schrödinger operators with homogeneous potentials of order zero, 偏微分方程式姫路研究集会, イーグレ姫路, 2019年3月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, Spectral and Scattering Theory and related topics, RIMS, December 2018.
+      </span>
+      <span class="lang ja">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, スペクトル・散乱理論とその周辺, 京都大学数理解析研究所 (RIMS), 2018年12月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, The 28th Symposium on Mathematical Physics and Differential Equations, KKR Hakodate, November 2018.
+      </span>
+      <span class="lang ja">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, 第28回数理物理と微分方程式, KKRはこだて, 2018年11月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, Math/Phys Seminar, Aarhus University, October 2018.
+      </span>
+      <span class="lang ja">
+        Semiclassical measure for Schrödinger operators with homogeneous potentials of order zero, Math/Phys Seminar, オーフス大学, 2018年10月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Summer School "Spectral Theory of Schrödinger Operators", Jena University, July 2018.
+      </span>
+      <span class="lang ja">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Summer School “Spectral Theory of Schrödinger Operators”, Jena University, 2018年7月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        On Schrödinger operators with homogeneous potentials of order zero on manifolds, Kobe University Analysis Seminar, Kobe University, November 2017.
+      </span>
+      <span class="lang ja">
+        On Schrödinger operators with homogeneous potentials of order zero on manifolds, 神戸大学解析ゼミ, 神戸大学, 2017年11月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, 2017 Symposium on Spectral and Scattering Theory in Matsumoto, Shinshu University, January 2017.
+      </span>
+      <span class="lang ja">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, 2017 Symposium on Spectral and Scattering Theory in Matsumoto, 信州大学, 2017年1月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Schrödinger operators with homogeneous potentials on manifolds, 第27回数理物理と微分方程式, かんぽの宿富山, November 2016.
+      </span>
+      <span class="lang ja">
+        Schrödinger operators with homogeneous potentials on manifolds, 第27回数理物理と微分方程式, かんぽの宿富山, 2016年11月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Lectures on Semi-Classical Analysis, Ritsumeikan University, July 2016.
+      </span>
+      <span class="lang ja">
+        Geometric Scattering for Schrödinger Operators with Asymptotically Homogeneous Potentials of Order Zero, Lectures on Semi-Classical Analysis, Ritsumeikan University, 2016年1月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        Geometrical scattering of the Schrödinger operators with potentials of order 0, 第26回数理物理と微分方程式, New Sun Pier Himeji Yumesaki, November 2015.
+      </span>
+      <span class="lang ja">
+        Geometrical scattering of the Schrödinger operators with potentials of order 0, 第26回数理物理と微分方程式, ニューサンピア姫路ゆめさき, 2015年11月.
+      </span>
+    </li>
+    <li>
+      <span class="lang en">
+        On Weyl’s law, 第25回数理物理と微分方程式, 四季の湯強羅静雲荘, November 2014.
+      </span>
+      <span class="lang ja">
+        ワイルの法則について, 第25回数理物理と微分方程式, 四季の湯強羅静雲荘, 2014年11月.
+      </span>
+    </li>
+  </ol>
+</section>
+
+
+<!-- Links -->
+<section id="links">
+  <h2>
+    <span class="lang en">Links</span>
+    <span class="lang ja">リンク</span>
+  </h2>
+  <ul>
+    <li>
+      <span class="lang en"><a href="https://researchmap.jp/keita-mikami/?lang=en" target="_blank">researchmap</a></span>
+      <span class="lang ja"><a href="https://researchmap.jp/keita-mikami/?lang=ja" target="_blank">researchmap (日本語版)</a></span>
+    </li>
+    <li>
+      <span class="lang en"><a href="https://orcid.org/0009-0002-8598-9200" target="_blank">ORCiD</a></span>
+      <span class="lang ja"><a href="https://orcid.org/0009-0002-8598-9200" target="_blank">ORCiD</a></span>
+    </li>
+    <li>
+      <span class="lang en"><a href="https://u-hyogo.info/en/" target="_blank">University of Hyogo Graduate School of Information Science</a></span>
+      <span class="lang ja"><a href="https://www.u-hyogo.ac.jp/sis/" target="_blank">兵庫県立大学大学院情報科学研究科</a></span>
+    </li>
+    <li>
+      <span class="lang en"><a href="https://ithems.riken.jp/en" target="_blank">iTHEMS Center</a></span>
+      <span class="lang ja"><a href="https://ithems.riken.jp/ja" target="_blank">iTHEMSセンター</a></span>
+    </li>
+    <li>
+      <span class="lang en"><a href="https://ithems.riken.jp/en/about/working-groups/ithems-math-phys-wg" target="_blank">iTHEMS Math-Phys WG</a></span>
+      <span class="lang ja"><a href="https://ithems.riken.jp/en/about/working-groups/ithems-math-phys-wg" target="_blank">iTHEMS Math-Phys WG</a></span>
+    </li>
+  </ul>
+</section>
+
   </main>
 
   <footer>
     <script>
-      const day = new Date(document.lastModified);
-      const y = day.getFullYear();
-      const m = day.getMonth() + 1;
-      const d = day.getDate();
-      document.write("Last Update: " + m + "/" + d + ", " + y);
+      (function() {
+        // 初期表示言語設定
+        const saved = localStorage.getItem('siteLang');
+        const browser = navigator.language.startsWith('ja') ? 'ja' : 'en';
+        const lang = saved || browser;
+        document.body.setAttribute('data-lang', lang);
+
+        // ボタンクリックで切替＆保存
+        document.querySelectorAll('.lang-switcher button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const chosen = btn.getAttribute('data-lang');
+            document.body.setAttribute('data-lang', chosen);
+            localStorage.setItem('siteLang', chosen);
+          });
+        });
+
+        // Last Update の表示
+        const day = new Date(document.lastModified || Date.now());
+        const y = day.getFullYear(), m = day.getMonth()+1, d = day.getDate();
+        const enText = `Last Update: ${m}/${d}, ${y}`;
+        const jaText = `最終更新: ${y}年${m}月${d}日`;
+        document.write('<p class="lang en">' + enText + '</p>');
+        document.write('<p class="lang ja">' + jaText + '</p>');
+      })();
     </script>
   </footer>
+
 </body>
 </html>
