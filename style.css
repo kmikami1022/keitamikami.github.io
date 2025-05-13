@@ -256,18 +256,49 @@ footer {
     }
   }
 }
-/* 1. ヘッダー高さを変数で定義（デスクトップの高さに合わせて調整） */
+/* --- 既存の CSS ルール群 --- */
+
+/* ここから末尾に追記 ↓ */
+
+/* 1. ヘッダー高さの変数定義 */
 :root {
-  --header-height: 15rem; /* 例：デスクトップでは4rem, スマホでは3.5rem など */
+  --header-height-desktop: 6.5rem;   /* デスクトップのヘッダー高さ */
+  --header-height-mobile: 10.5rem;   /* スマホのヘッダー高さ */
 }
 
-/* 2. 全画面に対してアンカーオフセットを適用 */
-[id] {
-  scroll-margin-top: var(--header-height);
+/* 2. 疑似要素でアンカー前にダミー領域を挿入 */
+/* デスクトップ（577px以上）用 */
+@media (min-width: 577px) {
+  section[id] {
+    position: relative;
+  }
+  section[id]::before {
+    content: "";
+    display: block;
+    height: var(--header-height-desktop);
+    margin-top: calc(-1 * var(--header-height-desktop));
+    visibility: hidden;
+  }
 }
 
-/* もしデスクトップとモバイルでヘッダー高さを変えたいなら… */
+/* スマホ（576px以下）用 */
 @media (max-width: 576px) {
-  :root { --header-height: 8.5rem; }
+  section[id] {
+    position: relative;
+  }
+  section[id]::before {
+    content: "";
+    display: block;
+    height: var(--header-height-mobile);
+    margin-top: calc(-1 * var(--header-height-mobile));
+    visibility: hidden;
+  }
+}
+/* ↑ ここまで追記 ↑ */
+
+html {
+  scroll-padding-top: var(--header-height);
+  /* お好みでスムーズスクロール */
+  /* scroll-behavior: smooth; */
 }
 }
