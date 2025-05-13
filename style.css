@@ -257,7 +257,7 @@ footer {
   }
   /* ヘッダーの高さと同じだけオフセット */
 :root {
-  --header-height: 3.5rem; /* ご自身の .header-top の height と合わせてください */
+  --header-height: 8.5rem; /* ご自身の .header-top の height と合わせてください */
 }
 
 /* id 属性がある要素すべてに適用したい場合 */
