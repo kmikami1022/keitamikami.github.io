@@ -255,9 +255,10 @@ footer {
       /* max-width: none; にしてもOK */
     }
   }
+}
 /* 1. ヘッダー高さを変数で定義（デスクトップの高さに合わせて調整） */
 :root {
-  --header-height: 15rem; /* 例：デスクトップでは4rem, スマホでは3.5rem など */
+  --header-height: 5rem; /* 例：デスクトップでは4rem, スマホでは3.5rem など */
 }
 
 /* 2. 全画面に対してアンカーオフセットを適用 */
@@ -268,6 +269,5 @@ footer {
 /* もしデスクトップとモバイルでヘッダー高さを変えたいなら… */
 @media (max-width: 576px) {
   :root { --header-height: 8.5rem; }
-}
 }
 }
