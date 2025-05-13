@@ -255,14 +255,19 @@ footer {
       /* max-width: none; にしてもOK */
     }
   }
-  /* ヘッダーの高さと同じだけオフセット */
+/* 1. ヘッダー高さを変数で定義（デスクトップの高さに合わせて調整） */
 :root {
-  --header-height: 8.5rem; /* ご自身の .header-top の height と合わせてください */
+  --header-height: 4rem; /* 例：デスクトップでは4rem, スマホでは3.5rem など */
 }
 
-/* id 属性がある要素すべてに適用したい場合 */
+/* 2. 全画面に対してアンカーオフセットを適用 */
 [id] {
   scroll-margin-top: var(--header-height);
+}
+
+/* もしデスクトップとモバイルでヘッダー高さを変えたいなら… */
+@media (max-width: 576px) {
+  :root { --header-height: 8.5rem; }
 }
 }
 }
