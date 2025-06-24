@@ -77,14 +77,19 @@
     .lang { display:none; }
     body[data-lang="en"] .lang.en { display:block; }
     body[data-lang="ja"] .lang.ja { display:block; }
+    /* プログラム表スタイル */
+    table.program { width:100%; border-collapse: collapse; margin-bottom:2rem; }
+    table.program th, table.program td { border:1px solid #ccc; padding:0.75rem; text-align:left; }
+    table.program th { background:#800020; color:#fff; text-align:center; }
+    table.program tr:nth-child(even) td { background:#f9f9f9; }
+    body[data-lang="en"] .lang.en { display:block; }
+    body[data-lang="ja"] .lang.ja { display:block; }
   </style>
 </head>
 <body data-lang="ja">
   <header class="header-top">
     <nav class="top-nav">
-      <a href="#program"><span class="lang en">Program</span><span class="lang ja">プログラム</span></a>
-      <a href="#speakers"><span class="lang en">Speakers</span><span class="lang ja">講演者</span></a>
-      <a href="#contact"><span class="lang en">Contact</span><span class="lang ja">お問い合わせ</span></a>
+      <img src="mugenRIMS2.jpg" alt="Logo" style="height:40px; margin-right:1rem;">
     </nav>
     <div class="lang-switcher">
       <button data-lang="en" class="active">English</button>
@@ -92,11 +97,29 @@
     </div>
   </header>
 
+  <!-- Registration Banner (Inline Styles Only) -->
+
+   <div style="background:#800020;color:#fff;text-align:center;padding:1.5rem 2rem;margin-top:80px;">
+    <p style="font-size:1.2rem;margin-bottom:1rem;">
+      <span class="lang en">Registration closes on August 24, 2025. </span>
+     <span class="lang ja">参加登録は2025年8月24日締切になります</span>
+    </p>
+  <a href="https://forms.gle/xcC5XFe4iZ5JJ2YD6"target="_blank" rel="noopener noreferrer"
+     style="background:#fff;color:#800020;font-weight:bold;padding:0.75rem 1.5rem;
+            border-radius:9999px;text-decoration:none;display:inline-block;">
+    <span class="lang en">Register Now</span>
+    <span class="lang ja">登録</span>
+  </a>
+</div>
+  
+
   <main class="content">
     <div class="profile">
       <div class="profile-info">
         <h1 class="lang en">Semi-Classical Analysis and Spectral Theory of Schrödinger Operators on Non-Compact Spaces</h1>
-        <h1 class="lang ja">非コンパクト空間上のシュレーディンガー作用素の半古典解析とスペクトル理論</h1>
+        <h1 class="lang ja">非コンパクト空間上のシュレーディンガー作用素の<br>半古典解析とスペクトル理論</h1>
+        <p class="lang en"><strong>RIMS Wokrshop (Type A)</strong> </p>
+        <p class="lang ja"><strong>RIMS共同研究（グループ型Ａ）</strong>  </p>
         <p class="lang en"><strong>Date:</strong> September 3 - 5, 2025</p>
         <p class="lang ja"><strong>日程:</strong> 2025年9月3日 (水) - 5日 (金) </p>
         <p class="lang en"><strong>Venue:</strong> Room 420, RIMS, Kyoto University, Japan</p>
@@ -104,15 +127,112 @@
       </div>
     </div>
 
-    <section id="program">
-      <h2><span class="lang en">Program</span><span class="lang ja">プログラム</span></h2>
-      <p><span class="lang en">TBA</span><span class="lang ja">未定</span></p>
-    </section>
-
     <section id="speakers">
       <h2><span class="lang en">Speakers</span><span class="lang ja">講演者</span></h2>
-      <p><span class="lang en">TBA</span><span class="lang ja">未定</span></p>
+      <p><span class="lang en">Setsuro Fujiie (Ritsumeikan University)</span><span class="lang ja">藤家 雪郎 (立命館大学)</span></p>
+      <p><span class="lang en">Serge Richard (Nagoya University)</span><span class="lang ja">Serge Richard (名古屋大学)</span></p>
+      <p><span class="lang en">Kentaro Kameoka (Ritsumeikan University)</span><span class="lang ja">亀岡 健太郎 (立命館大学)</span></p>
+      <p><span class="lang en">Shota Fukushima (Gunma University)</span><span class="lang ja">福嶌 翔太 (群馬大学)</span></p>
     </section>
+
+    <section id="program">
+      <h2><span class="lang en">Program</span><span class="lang ja">プログラム</span></h2>
+      <table class="program">
+        <thead>
+          <tr>
+            <th><span class="lang en">Date</span><span class="lang ja">日付</span></th>
+            <th><span class="lang en">Time</span><span class="lang ja">時間</span></th>
+            <th><span class="lang en">Speaker</span><span class="lang ja">講演者</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3">
+              <span class="lang en">Sep 3, 2025 (Wed)</span>
+              <span class="lang ja">2025年9月3日（水）</span>
+            </td>
+            <td>13:00–14:00</td>
+            <td>
+              <span class="lang en"> Serge Richard </span>
+              <span class="lang ja"> Serge Richard </span>
+            </td>
+          </tr>
+          <tr>
+            <td>14:10–15:10</td>
+            <td>
+              <span class="lang en"> Setsuro Fujiie </span>
+              <span class="lang ja"> 藤家 雪郎 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>15:40–16:40</td>
+            <td>
+              <span class="lang en"> Serge Richard </span>
+              <span class="lang ja"> Serge Richard </span>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="5">
+              <span class="lang en">Sep 4, 2025 (Thu)</span>
+              <span class="lang ja">2025年9月4日（木）</span>
+            </td>
+            <td>09:30–10:30</td>
+            <td>
+              <span class="lang en"> Setsuro Fujiie </span>
+              <span class="lang ja"> 藤家 雪郎 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>10:40–11:40</td>
+            <td>
+              <span class="lang en"> Shota Fukushima </span>
+              <span class="lang ja"> 福嶌 翔太 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>13:10–14:10</td>
+            <td>
+              <span class="lang en"> Setsuro Fujiie </span>
+              <span class="lang ja"> 藤家 雪郎 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>14:40–15:40</td>
+            <td>
+              <span class="lang en"> Kentaro Kameoka </span>
+              <span class="lang ja"> 亀岡 健太郎 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>15:50–16:50</td>
+            <td>
+              <span class="lang en"> Setsuro Fujiie </span>
+              <span class="lang ja"> 藤家 雪郎 </span>
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="2">
+              <span class="lang en">Sep 5, 2025 (Fri)</span>
+              <span class="lang ja">2025年9月5日（金）</span>
+            </td>
+            <td>09:30–10:30</td>
+            <td>
+              <span class="lang en"> Shota Fukushima </span>
+              <span class="lang ja"> 福嶌 翔太 </span>
+            </td>
+          </tr>
+          <tr>
+            <td>10:40–11:40</td>
+            <td>
+              <span class="lang en"> Kentaro Kameoka </span>
+              <span class="lang ja"> 亀岡 健太郎 </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    
 
     <section id="contact">
       <h2><span class="lang en">Contact</span><span class="lang ja">お問い合わせ</span></h2>
