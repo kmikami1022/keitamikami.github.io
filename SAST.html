@@ -242,24 +242,59 @@
   </main>
 
   <footer>
-    <p class="lang en">Last updated: <span id="last-updated-en"></span></p>
-    <p class="lang ja">最終更新: <span id="last-updated-ja"></span></p>
-  </footer>
+    <script>
+      (function() {
+        // 初期表示言語設定
+        const saved = localStorage.getItem('siteLang');
+        const browser = navigator.language.startsWith('ja') ? 'ja' : 'en';
+        const lang = saved || browser;
+        document.body.setAttribute('data-lang', lang);
 
-  <script>
-    // 言語切替
-    document.querySelectorAll('.lang-switcher button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.body.dataset.lang = btn.dataset.lang;
-        document.querySelectorAll('.lang-switcher button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-    // 最終更新日表示
-    const todayJa = new Date().toLocaleDateString('ja-JP');
-    const todayEn = new Date().toLocaleDateString('en-US');
-    document.getElementById('last-updated-ja').textContent = todayJa;
-    document.getElementById('last-updated-en').textContent = todayJa; // display same format or change to todayEn if desired
-  </script>
+        // ボタンクリックで切替＆保存
+        document.querySelectorAll('.lang-switcher button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const chosen = btn.getAttribute('data-lang');
+            document.body.setAttribute('data-lang', chosen);
+            localStorage.setItem('siteLang', chosen);
+          });
+        });
+
+        // Last Update の表示
+        const day = new Date(document.lastModified || Date.now());
+        const y = day.getFullYear(), m = day.getMonth()+1, d = day.getDate();
+        const enText = `Last Update: ${m}/${d}, ${y}`;
+        const jaText = `最終更新: ${y}年${m}月${d}日`;
+        document.write('<p class="lang en">' + enText + '</p>');
+        document.write('<p class="lang ja">' + jaText + '</p>');
+      })();
+    </script>
+  </footer>
+<!-- Bootstrap の JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    const header = document.querySelector(".header-top");
+    const headerH = header ? header.offsetHeight : 0;
+
+    function offsetAnchor(){
+      if(location.hash) {
+        const target = document.querySelector(location.hash);
+        if(target) {
+          const y = target.getBoundingClientRect().top + window.pageYOffset - headerH;
+          window.scrollTo(0, y);
+        }
+      }
+    }
+
+    // ページ読込時のハッシュ対応
+    setTimeout(offsetAnchor, 1);
+    // リンククリック後のハッシュ変更対応
+    window.addEventListener("hashchange", offsetAnchor);
+  });
+</script>
+
 </body>
 </html>
