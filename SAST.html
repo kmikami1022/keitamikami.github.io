@@ -254,14 +254,6 @@
             localStorage.setItem('siteLang', chosen);
           });
         });
-
-        // Last Update の表示
-        const day = new Date(document.lastModified || Date.now());
-        const y = day.getFullYear(), m = day.getMonth()+1, d = day.getDate();
-        const enText = `Last Update: ${m}/${d}, ${y}`;
-        const jaText = `最終更新: ${y}年${m}月${d}日`;
-        document.write('<p class="lang en">' + enText + '</p>');
-        document.write('<p class="lang ja">' + jaText + '</p>');
       })();
     </script>
   </footer>
