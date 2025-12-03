@@ -101,15 +101,9 @@
 
    <div style="background:#800020;color:#fff;text-align:center;padding:1.5rem 2rem;margin-top:80px;">
     <p style="font-size:1.2rem;margin-bottom:1rem;">
-      <span class="lang en">Registration closes on August 24, 2025. </span>
-     <span class="lang ja">参加登録は2025年8月24日締切になります</span>
+      <span class="lang en"> The workshop concluded successfully. Many thanks to all participants. </span>
+     <span class="lang ja">本研究集会は盛況のうちに終了いたしました. ご参加の皆様、誠にありがとうございました.</span>
     </p>
-  <a href="https://forms.gle/xcC5XFe4iZ5JJ2YD6"target="_blank" rel="noopener noreferrer"
-     style="background:#fff;color:#800020;font-weight:bold;padding:0.75rem 1.5rem;
-            border-radius:9999px;text-decoration:none;display:inline-block;">
-    <span class="lang en">Register Now</span>
-    <span class="lang ja">登録</span>
-  </a>
 </div>
   
 
@@ -117,7 +111,7 @@
     <div class="profile">
       <div class="profile-info">
         <h1 class="lang en">Semi-Classical Analysis and Spectral Theory of Schrödinger Operators on Non-Compact Spaces</h1>
-        <h1 class="lang ja">非コンパクト空間上のシュレーディンガー作用素の<br>半古典解析とスペクトル理論</h1>
+        <h1 class="lang ja">非コンパクト空間上の準古典解析と<br>シュレディンガー作用素のスペクトル理論</h1>
         <p class="lang en"><strong>RIMS Wokrshop (Type A)</strong> </p>
         <p class="lang ja"><strong>RIMS共同研究（グループ型Ａ）</strong>  </p>
         <p class="lang en"><strong>Date:</strong> September 3 - 5, 2025</p>
@@ -134,6 +128,20 @@
       <p><span class="lang en">Kentaro Kameoka (Ritsumeikan University)</span><span class="lang ja">亀岡 健太郎 (立命館大学)</span></p>
       <p><span class="lang en">Shota Fukushima (Gunma University)</span><span class="lang ja">福嶌 翔太 (群馬大学)</span></p>
     </section>
+
+     <section id="materials">
+      <h2><span class="lang en">Materials</span><span class="lang ja">資料</span></h2>
+      <li>
+        <span class="lang en">
+    📄     <a href="minicours2025.pdf" target="_blank">Lecture notes by Prof. Fujiie</a>
+            <small>(PDF, English)</small>
+             </span>
+          <span class="lang ja">
+          📄 <a href="minicours2025.pdf" target="_blank">講演資料 (藤家先生)</a>
+         <small>（英語のみになります）</small>
+         </span>
+      </li>
+     </section>
 
     <section id="program">
       <h2><span class="lang en">Program</span><span class="lang ja">プログラム</span></h2>
@@ -260,14 +268,6 @@
             localStorage.setItem('siteLang', chosen);
           });
         });
-
-        // Last Update の表示
-        const day = new Date(document.lastModified || Date.now());
-        const y = day.getFullYear(), m = day.getMonth()+1, d = day.getDate();
-        const enText = `Last Update: ${m}/${d}, ${y}`;
-        const jaText = `最終更新: ${y}年${m}月${d}日`;
-        document.write('<p class="lang en">' + enText + '</p>');
-        document.write('<p class="lang ja">' + jaText + '</p>');
       })();
     </script>
   </footer>
