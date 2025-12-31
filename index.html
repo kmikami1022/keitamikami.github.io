@@ -106,6 +106,42 @@
       white-space: nowrap;
     }
     .top-nav a:hover { background: #a00030; }
+
+    #news { --news-accent: #333; } /* 初期値。JSで上書きします */
+
+  #news .news-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  #news .news-tabs {
+    display: inline-flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    font-size: 0.62em;                 /* 年は小さく */
+    color: var(--news-accent);         /* 見出し色に同期（JSが設定） */
+  }
+
+  #news .news-tab {
+  appearance: none;
+  -webkit-appearance: none;
+
+  font: inherit;
+  background: var(--news-accent);
+  border: 1px solid var(--news-accent);
+  color: #fff;
+
+  border-radius: 999px;
+  padding: 0.12rem 0.5rem;
+  line-height: 1.2;
+
+  cursor: pointer;
+}
+
+
   </style>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -144,19 +180,29 @@
 
      <!-- お知らせ -->
     <section id="news">
-      <h2>
-        <span class="lang en">NEWS</span>
-        <span class="lang ja">お知らせ</span>
+      <h2 class="news-header">
+        <span class="news-title">
+       <span class="lang en">NEWS</span>
+       <span class="lang ja">お知らせ</span>
+       </span>
+
+         <div class="news-tabs" role="tablist" aria-label="News by year">
+         <button class="news-tab is-active" role="tab" aria-selected="true" data-year="2026">2026</button>
+         <button class="news-tab" role="tab" aria-selected="false" data-year="2025">2025</button>
+        </div>
       </h2>
-      <p>
+
+      <p class="news-item" data-year="2026">
         <span class="lang en"> <span style="color: #800020;">2026/1/1</span> Happy New Year. I’ll be co-organizing a research meeting in Himeji this March. Details are available <a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">here</a>.</span>
         <span class="lang ja"> <span style="color: #800020;">2026/1/1</span> 明けましておめでとうございます。今年は3月に姫路で研究集会の世話人(の一人)をする予定です。詳細は<a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">こちら</a>。</span></span>
       </p>
-      <p>
+
+      <p class="news-item" data-year="2025">
         <span class="lang en"> <span style="color: #800020;">2025/9/10</span> We organized a workshop at the Research Institute for Mathematical Sciences, Kyoto University. We are deeply grateful to all who participated, and in particular to the speakers for their valuable contributions.</span>
         <span class="lang ja"> <span style="color: #800020;">2025/9/10</span> 2025年9月3日から5日まで京都大学数理解析研究所で研究集会を開催しました。ご参加いただいた皆様、特に講演をご担当いただいた皆様ありがとうございました。</span></span>
       </p>
-      <p>
+
+      <p class="news-item" data-year="2025">
         <span class="lang en"> <span style="color: #800020;">2025/7/24</span> We will hold a conference on September 2025 at the Research Institute for Mathematical Sciences (Kyoto). Detailed information is <a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">here</a>.</span>
         <span class="lang ja"> <span style="color: #800020;">2025/7/24</span> 2025年9月に京都大学数理解析研究所で研究集会を開催します。詳細は<a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">こちら</a>。</span></span>
       </p>
@@ -792,6 +838,71 @@
     // リンククリック後のハッシュ変更対応
     window.addEventListener("hashchange", offsetAnchor);
   });
+</script>
+
+<script>
+  (function () {
+    const news = document.getElementById('news');
+    if (!news) return;
+
+    const tabs = Array.from(news.querySelectorAll('.news-tab'));
+    const items = Array.from(news.querySelectorAll('.news-item'));
+    if (tabs.length === 0 || items.length === 0) return;
+
+    function getVisibleTitleColor() {
+      const titleLangs = Array.from(news.querySelectorAll('.news-title .lang'));
+      const visible =
+        titleLangs.find(el => {
+          const cs = window.getComputedStyle(el);
+          return cs.display !== 'none' && cs.visibility !== 'hidden' && cs.opacity !== '0';
+        }) || titleLangs[0];
+
+      if (!visible) return null;
+      return window.getComputedStyle(visible).color;
+    }
+
+    function syncAccent() {
+      const c = getVisibleTitleColor();
+      if (c) news.style.setProperty('--news-accent', c);
+    }
+
+    function activate(year) {
+      let matched = 0;
+
+      tabs.forEach(btn => {
+        const on = btn.dataset.year === year;
+        btn.classList.toggle('is-active', on);
+        btn.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+
+      items.forEach(p => {
+        const on = p.dataset.year === year;
+        if (on) matched += 1;
+        p.hidden = !on;
+      });
+
+      /* 年が合わずに全消しになる事故の保険：一致が0なら全部表示 */
+      if (matched === 0) {
+        items.forEach(p => { p.hidden = false; });
+      }
+    }
+
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => activate(btn.dataset.year));
+    });
+
+    syncAccent();
+
+    const initial = (news.querySelector('.news-tab.is-active') || tabs[0]).dataset.year;
+    activate(initial);
+
+    const mo = new MutationObserver(() => syncAccent());
+    mo.observe(news.querySelector('.news-title') || news, {
+      attributes: true,
+      subtree: true,
+      childList: true
+    });
+  })();
 </script>
 
 </body>
