@@ -2,18 +2,8 @@
 /* 1. テーマカラー & ベース設定 */
 /* ───────────────────────────────────────── */
 :root {
-  /* 兵庫県立大学イメージ：ネイビー＆ゴールド（参考値） */
-  --uh-navy: #002B5C;
-  --uh-navy-dark: #001B3A;
-  --uh-gold: #D4AF37;
-  --uh-gold-dark: #B3892E;
-
-  /* 既存変数の互換（主色＝ネイビー、アクセント＝ゴールド） */
-  --color-primary: var(--uh-navy);
-  --color-primary-light: #0F3B73; /* ネイビー（やや明） */
-  --color-accent: var(--uh-gold);
-  --color-accent-dark: var(--uh-gold-dark);
-
+  --color-primary: #800020;
+  --color-primary-light: #a00030;
   --color-bg: #f4f4f4;
   --color-surface: #ffffff;
   --color-text: #333333;
@@ -48,7 +38,7 @@ header {
   width: 100%;
   backdrop-filter: blur(10px);
   background-color: rgba(255,255,255,0.85);
-  border-bottom: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-primary-light);
   z-index: 1000;
   box-shadow: var(--shadow-light);
   padding: var(--spacing-sm) 0;
@@ -135,7 +125,7 @@ h2 {
   color: var(--color-primary);
   font-size: 1.75rem;
   letter-spacing: 0.5px;
-  border-bottom: 3px solid var(--color-accent);
+  border-bottom: 3px solid var(--color-primary);
   padding-bottom: var(--spacing-sm);
 }
 
@@ -174,11 +164,11 @@ ol, ul {
 a {
   color: var(--color-primary);
   text-decoration: none;
-  border-bottom: 1px dashed var(--color-accent);
+  border-bottom: 1px dashed var(--color-primary);
   transition: border-color 0.3s;
 }
 a:hover {
-  border-color: var(--color-accent-dark);
+  border-color: var(--color-primary-light);
 }
 
 /* ───────────────────────────────────────── */
@@ -190,7 +180,7 @@ footer {
   font-size: 0.9rem;
   color: #666;
   background-color: var(--color-surface);
-  border-top: 1px solid var(--color-accent);
+  border-top: 1px solid var(--color-primary-light);
   margin-top: var(--spacing-lg);
   box-shadow: var(--shadow-light);
 }

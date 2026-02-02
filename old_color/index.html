@@ -19,17 +19,6 @@
     body[data-lang="ja"] .lang.ja { display: block; }
     body[data-lang="ja"] .lang.en { display: none; }
 
-
-    /* カラーテーマ（兵庫県立大学のイメージ：ブルー＆ゴールド） */
-    :root {
-      --uh-blue: #0065AB;      /* ブルー（参考値） */
-      --uh-blue-dark: #004A7A; /* ブルー（濃） */
-      --uh-navy: #002B5C;      /* ネイビー（参考値） */
-      --uh-navy-dark: #001B3A; /* ネイビー（濃） */
-      --uh-gold: #D4AF37;      /* ゴールド（参考値） */
-      --uh-gold-dark: #B3892E; /* ゴールド（濃） */
-    }
-
     /* テーブル */
     table.q { width:100%; border-collapse:collapse; table-layout:fixed; }
     table.q th, table.q td { padding:0.8rem; text-align:left; vertical-align:top; word-wrap:break-word; }
@@ -41,7 +30,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem;
-      background: linear-gradient(90deg, var(--uh-blue) 0%, var(--uh-blue) 70%, var(--uh-gold) 70%, var(--uh-gold) 100%);
+      background: #fff;
     }
 
     /* ヘッダートップ: ナビと切替を並べる */
@@ -90,15 +79,15 @@
     .lang-switcher button {
       margin-left: 0.5rem;
       padding: 0.5rem 1rem;
-      border: 2px solid var(--uh-blue);
+      border: 2px solid #800020;
       border-radius: 9999px;
       background: transparent;
-      color: var(--uh-blue);
+      color: #800020;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
-    .lang-switcher button:hover { background: var(--uh-blue); color: #fff; }
+    .lang-switcher button:hover { background: #800020; color: #fff; }
 
     /* トップナビ */
     .top-nav {
@@ -109,17 +98,16 @@
       display: inline-block;
       padding: 0.5rem 1rem;
       border-radius: 5px;
-            border: 1px solid var(--uh-gold);
-background: var(--uh-blue);
+      background: #800020;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
       transition: background 0.3s;
       white-space: nowrap;
     }
-    .top-nav a:hover { background: var(--uh-gold); color: #000; }
+    .top-nav a:hover { background: #a00030; }
 
-    #news { --news-accent: var(--uh-navy); } /* 初期値。JSで上書きします */
+    #news { --news-accent: #333; } /* 初期値。JSで上書きします */
 
   #news .news-header {
     display: flex;
@@ -154,70 +142,7 @@ background: var(--uh-blue);
 }
 
 
-  
-#news .news-tab.is-active {
-  background: var(--uh-gold);
-  border-color: var(--uh-gold);
-  color: #000;
-}
-
-#news .news-title { color: var(--uh-navy); }
-
-    /* 折りたたみ（各セクション） */
-    details.collapsible { margin: 1.6rem 0; }
-    details.collapsible > summary {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      user-select: none;
-    }
-    details.collapsible > summary::-webkit-details-marker { display: none; }
-    details.collapsible > summary::marker { content: ""; }
-
-    .toggle-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 1.6rem;
-      height: 1.6rem;
-      border: 1px solid rgba(0,0,0,0.15);
-      background: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-      flex: 0 0 auto;
-      padding: 0;
-      line-height: 1;
-    }
-    .toggle-btn:hover { border-color: rgba(0,0,0,0.35); }
-
-    .toggle-icon {
-      display: inline-block;
-      font-size: 1.05rem;
-      color: var(--uh-navy);
-      transform-origin: 50% 55%;
-      transform: rotate(-90deg); /* デフォは閉：右向きに見える */
-      transition: transform 0.15s ease;
-    }
-    details.collapsible[open] .toggle-icon { transform: rotate(0deg); } /* 開：下向き */
-
-    .section-title {
-      font-weight: 800;
-      font-size: 1.55rem;
-      color: var(--uh-navy);
-      border-bottom: 3px solid var(--uh-gold);
-      padding-bottom: 0.35rem;
-      margin: 0;
-      display: inline-block;
-      line-height: 1.2;
-    }
-
-    /* NEWS だけはタブを見出し下に置く */
-    #news .news-tabs { margin: 0.35rem 0 0.75rem; }
-
-</style>
+  </style>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -247,7 +172,7 @@ background: var(--uh-blue);
     <div class="profile">
       <img src="hyogouniv2.jpg" alt="" class="responsive-img">
       <div class="profile-info">
-        <h1><p style="color: var(--uh-blue);"><span class="lang en">Keita Mikami</span><span class="lang ja">三上 渓太</span></p></h1>
+        <h1><p style="color: #800020;"><span class="lang en">Keita Mikami</span><span class="lang ja">三上 渓太</span></p></h1>
         <p><span class="lang en">Assistant Professor <br>Graduate School of Information Sciences <br>University of Hyogo</span><span class="lang ja">兵庫県立大学大学院情報科学研究科 助教</span></p>
         <p><span class="lang en">e-mail: keita_mikami [at] sis.u-hyogo.ac.jp</span><span class="lang ja">メール: keita_mikami [at] sis.u-hyogo.ac.jp</span></p>
       </div>
@@ -255,60 +180,52 @@ background: var(--uh-blue);
 
      <!-- お知らせ -->
     <section id="news">
-      <details class="collapsible" open>
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="news-title">
+      <h2 class="news-header">
+        <span class="news-title">
        <span class="lang en">NEWS</span>
        <span class="lang ja">お知らせ</span>
-       </span></span></summary>
-        <div class="news-tabs" role="tablist" aria-label="News by year">
+       </span>
+
+         <div class="news-tabs" role="tablist" aria-label="News by year">
          <button class="news-tab is-active" role="tab" aria-selected="true" data-year="2026">2026</button>
          <button class="news-tab" role="tab" aria-selected="false" data-year="2025">2025</button>
         </div>
-
-
-       <p class="news-item" data-year="2026">
-        <span class="lang en"> <span style="color: var(--uh-gold);">2026/2/3</span> I have updated the website’s color scheme to match the University Colors of the University of Hyogo.</span>
-        <span class="lang ja"> <span style="color: var(--uh-gold);">2026/2/3</span> ホームページの色調を兵庫県立大学のユニバーシティカラーに合わせたものに変更しました。</span></span>
-      </p>
+      </h2>
 
       <p class="news-item" data-year="2026">
-        <span class="lang en"> <span style="color: var(--uh-gold);">2026/1/1</span> Happy New Year. I’ll be co-organizing a research meeting in Himeji this March. Details are available <a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">here</a>.</span>
-        <span class="lang ja"> <span style="color: var(--uh-gold);">2026/1/1</span> 明けましておめでとうございます。今年は3月に姫路で研究集会の世話人(の一人)をする予定です。詳細は<a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">こちら</a>。</span></span>
+        <span class="lang en"> <span style="color: #800020;">2026/1/1</span> Happy New Year. I’ll be co-organizing a research meeting in Himeji this March. Details are available <a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">here</a>.</span>
+        <span class="lang ja"> <span style="color: #800020;">2026/1/1</span> 明けましておめでとうございます。今年は3月に姫路で研究集会の世話人(の一人)をする予定です。詳細は<a href="http://www.math.ritsumei.ac.jp/takuwatanabe/CHPDE/CPDEen.html" target="_blank">こちら</a>。</span></span>
       </p>
 
       <p class="news-item" data-year="2025">
-        <span class="lang en"> <span style="color: var(--uh-gold);">2025/9/10</span> We organized a workshop at the Research Institute for Mathematical Sciences, Kyoto University. We are deeply grateful to all who participated, and in particular to the speakers for their valuable contributions.</span>
-        <span class="lang ja"> <span style="color: var(--uh-gold);">2025/9/10</span> 2025年9月3日から5日まで京都大学数理解析研究所で研究集会を開催しました。ご参加いただいた皆様、特に講演をご担当いただいた皆様ありがとうございました。</span></span>
+        <span class="lang en"> <span style="color: #800020;">2025/9/10</span> We organized a workshop at the Research Institute for Mathematical Sciences, Kyoto University. We are deeply grateful to all who participated, and in particular to the speakers for their valuable contributions.</span>
+        <span class="lang ja"> <span style="color: #800020;">2025/9/10</span> 2025年9月3日から5日まで京都大学数理解析研究所で研究集会を開催しました。ご参加いただいた皆様、特に講演をご担当いただいた皆様ありがとうございました。</span></span>
       </p>
 
       <p class="news-item" data-year="2025">
-        <span class="lang en"> <span style="color: var(--uh-gold);">2025/7/24</span> We will hold a conference on September 2025 at the Research Institute for Mathematical Sciences (Kyoto). Detailed information is <a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">here</a>.</span>
-        <span class="lang ja"> <span style="color: var(--uh-gold);">2025/7/24</span> 2025年9月に京都大学数理解析研究所で研究集会を開催します。詳細は<a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">こちら</a>。</span></span>
+        <span class="lang en"> <span style="color: #800020;">2025/7/24</span> We will hold a conference on September 2025 at the Research Institute for Mathematical Sciences (Kyoto). Detailed information is <a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">here</a>.</span>
+        <span class="lang ja"> <span style="color: #800020;">2025/7/24</span> 2025年9月に京都大学数理解析研究所で研究集会を開催します。詳細は<a href="https://kmikami1022.github.io/keitamikami.github.io/SAST.html" target="_blank">こちら</a>。</span></span>
       </p>
-    
-      </details>
-</section>
+    </section>
 
     <!-- 研究分野 -->
     <section id="research">
-      <details class="collapsible">
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="lang en">Research Interests</span>
-        <span class="lang ja">研究分野</span></span></summary>
-
+      <h2>
+        <span class="lang en">Research Interests</span>
+        <span class="lang ja">研究分野</span>
+      </h2>
       <p>
         <span class="lang en">I am interested in <strong>Schrödinger operators</strong> and related topics.</span>
         <span class="lang ja">私は<strong>シュレディンガー作用素</strong>および関連分野に興味があります。</span>
       </p>
-    
-      </details>
-</section>
+    </section>
 
     <!-- 略歴 -->
     <section id="cv">
-      <details class="collapsible">
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="lang en">Curriculum Vitae</span>
-        <span class="lang ja">略歴</span></span></summary>
-
+      <h2>
+        <span class="lang en">Curriculum Vitae</span>
+        <span class="lang ja">略歴</span>
+      </h2>
       <p>
         <span class="lang en">
           <strong>Name:</strong> Keita Mikami<br>
@@ -524,18 +441,16 @@ background: var(--uh-blue);
         </article>
       </div>
 
-    
-      </details>
-</section>
+    </section>
 
     <!-- Publications, Talks, Links も同様に <span class="lang en">…</span> / <span class="lang ja">…</span> でラップしてください -->
   
     <!-- Publications -->
     <section id="publications">
-      <details class="collapsible">
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="lang en">Publications</span>
-    <span class="lang ja">出版物</span></span></summary>
-
+  <h2>
+    <span class="lang en">Publications</span>
+    <span class="lang ja">出版物</span>
+  </h2>
   <article>
     <h3>
       <span class="lang en">Papers (peer‐reviewed, English)</span>
@@ -626,15 +541,13 @@ background: var(--uh-blue);
     </h3>
     <!-- プレプリントがあればここに追加 -->
   </article>
-
-      </details>
 </section>
 
 <section id="talks">
-      <details class="collapsible">
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="lang en">Talks</span>
-    <span class="lang ja">講演</span></span></summary>
-
+  <h2>
+    <span class="lang en">Talks</span>
+    <span class="lang ja">講演</span>
+  </h2>
   <ol>
     <li>
       <span class="lang en">
@@ -837,17 +750,15 @@ background: var(--uh-blue);
       </span>
     </li>
   </ol>
-
-      </details>
 </section>
 
 
 <!-- Links -->
 <section id="links">
-      <details class="collapsible" >
-        <summary><button type="button" class="toggle-btn" aria-label="toggle section" aria-expanded="false"><span class="toggle-icon">▾</span></button><span class="section-title"><span class="lang en">Links</span>
-    <span class="lang ja">リンク</span></span></summary>
-
+  <h2>
+    <span class="lang en">Links</span>
+    <span class="lang ja">リンク</span>
+  </h2>
   <ul>
     <li>
       <span class="lang en"><a href="https://researchmap.jp/keita-mikami/?lang=en" target="_blank">researchmap</a></span>
@@ -870,8 +781,6 @@ background: var(--uh-blue);
       <span class="lang ja"><a href="https://ithems.riken.jp/en/about/working-groups/ithems-math-phys-wg" target="_blank">iTHEMS Math-Phys WG</a></span>
     </li>
   </ul>
-
-      </details>
 </section>
 
   </main>
